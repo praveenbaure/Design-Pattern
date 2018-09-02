@@ -26,7 +26,7 @@ public:
 class marathi: public meal{
 public:
     void staple_food() override {
-        printf("zunka and bhakar");
+        printf("zunka and bhakar\n");
     }
 };
 
@@ -64,7 +64,7 @@ public:
     virtual breakfast *get_breakfast() = 0;
     static menu_factory* getmenu(int );
     virtual ~menu_factory(){
-        delete this;
+        printf("Deleting menu factory\n");
     }
 };
 
@@ -83,6 +83,9 @@ class marathi_menu:public menu_factory{
     }
     breakfast *get_breakfast() override{
         return  new marathi_breakfast;
+    }
+    ~marathi_menu() override {
+        printf("Deleting marathi menu\n");
     }
 };
 
